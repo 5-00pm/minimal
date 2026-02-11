@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Focus Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-light">
+
+    <div class="app-container">
+        <header id="quiz-header" class="hidden">
+            <button id="theme-toggle" class="btn-icon" aria-label="Switch Theme">
+                <span id="theme-name">Light</span>
+                <span class="icon">◑</span>
+            </button>
+            <div class="timer-container">
+                <span class="icon">⏱</span>
+                <span id="timer-display">00:00</span>
+            </div>
+        </header>
+
+        <section id="screen-home" class="screen active">
+            <h1>Subject Select</h1>
+            <p class="subtitle">Choose your focus area</p>
+            
+            <div class="form-group">
+                <label for="sel-subject">Subject</label>
+                <select id="sel-subject">
+                    <option value="">Select Subject...</option>
+                    </select>
+            </div>
+
+            <div class="form-group hidden" id="group-grade">
+                <label for="sel-grade">Grade Level</label>
+                <select id="sel-grade">
+                    <option value="">Select Grade...</option>
+                </select>
+            </div>
+
+            <div class="form-group hidden" id="group-unit">
+                <label for="sel-unit">Unit</label>
+                <select id="sel-unit">
+                    <option value="">Select Unit...</option>
+                </select>
+            </div>
+
+            <button id="btn-setup" class="btn-primary" disabled>Continue</button>
+        </section>
+
+        <section id="screen-setup" class="screen hidden">
+            <h1>Time Goal</h1>
+            <p class="subtitle">Set a timer for this session (minutes)</p>
+            
+            <div class="time-input-wrapper">
+                <input type="number" id="time-input" min="1" max="120" value="10" placeholder="10">
+                <span>min</span>
+            </div>
+
+            <div class="button-row">
+                <button id="btn-back-home" class="btn-text">Back</button>
+                <button id="btn-start-quiz" class="btn-primary">Start Quiz</button>
+            </div>
+        </section>
+
+        <section id="screen-quiz" class="screen hidden">
+            <div class="progress-bar-bg">
+                <div id="progress-bar-fill" style="width: 0%"></div>
+            </div>
+
+            <div class="question-meta">
+                <span id="question-counter">Question 1 of 10</span>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text">Question text goes here?</h2>
+                <div id="options-container" class="options-grid">
+                    </div>
+            </div>
+
+            <footer class="quiz-footer">
+                <button id="btn-prev" class="btn-secondary" disabled>Previous</button>
+                <button id="btn-next" class="btn-primary">Next</button>
+            </footer>
+        </section>
+
+        <section id="screen-result" class="screen hidden">
+            <h1>Session Complete</h1>
+            
+            <div class="score-card">
+                <div class="score-display">
+                    <span id="score-val">0</span>
+                    <span class="score-total">/ 0</span>
+                </div>
+                <p id="feedback-msg">Good effort!</p>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat">
+                    <span class="label">Time Used</span>
+                    <span class="value" id="stat-time">00:00</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Target</span>
+                    <span class="value" id="stat-goal">00:00</span>
+                </div>
+            </div>
+
+            <button id="btn-restart" class="btn-primary">Return Home</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
