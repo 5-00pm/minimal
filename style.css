@@ -1,0 +1,291 @@
+/* --- Variables & Themes --- */
+:root {
+    /* Base defaults (Light) */
+    --bg-color: #ffffff;
+    --text-color: #2d3436;
+    --accent-color: #0984e3;
+    --accent-hover: #076aad;
+    --card-bg: #f5f6fa;
+    --border-color: #dcdde1;
+    --success-color: #00b894;
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Theme: Dark */
+.theme-dark {
+    --bg-color: #1e1e1e;
+    --text-color: #dfe6e9;
+    --accent-color: #74b9ff;
+    --accent-hover: #0984e3;
+    --card-bg: #2d3436;
+    --border-color: #4b4b4b;
+}
+
+/* Theme: Minimal (High Contrast) */
+.theme-minimal {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #000000;
+    --accent-hover: #333333;
+    --card-bg: #ffffff;
+    --border-color: #000000;
+}
+
+/* Theme: Soft Paper */
+.theme-paper {
+    --bg-color: #fcfbf7;
+    --text-color: #4a4a4a;
+    --accent-color: #c0392b;
+    --accent-hover: #a93226;
+    --card-bg: #fcfbf7; /* Same as bg for seamless feel */
+    --border-color: #d7d0c0;
+    --font-main: "Georgia", serif; /* Serif for paper feel */
+}
+
+/* --- Global Reset & Base --- */
+* { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+}
+
+/* --- Utility Classes --- */
+.hidden { display: none !important; }
+
+/* --- Headers & Navigation --- */
+#quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.btn-icon {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Screen Layouts --- */
+.screen {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 { font-size: 2rem; margin-bottom: 0.5rem; text-align: center; }
+.subtitle { text-align: center; color: var(--text-color); opacity: 0.7; margin-bottom: 2.5rem; }
+
+/* --- Forms & Inputs --- */
+.form-group { margin-bottom: 1.5rem; }
+label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+select:focus, input:focus { outline: 2px solid var(--accent-color); border-color: transparent; }
+
+.time-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+#time-input{ 
+    width: 100px; 
+    text-align: center; 
+}
+#btn-back-home{
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btn-back-home:hover {
+    background: var(--accent-hover);
+    color: #fff;
+    border-color: var(--accent-hover);
+}
+
+/* --- Buttons --- */
+.btn-primary, .btn-secondary {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.btn-primary { background-color: var(--accent-color); color: #fff; }
+.btn-primary:hover:not(:disabled) { background-color: var(--accent-hover); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); }
+.btn-secondary:hover:not(:disabled) { background-color: var(--card-bg); }
+
+.button-row { display: flex; gap: 1rem; }
+.quiz-footer { display: flex; gap: 1rem; margin-top: 2rem; }
+
+/* --- Quiz Interface --- */
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+#progress-bar-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.question-meta { font-size: 0.85rem; opacity: 0.7; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+.question-container h2 { font-size: 1.4rem; margin-bottom: 2rem; line-height: 1.4; }
+
+.options-grid { display: flex; flex-direction: column; gap: 12px; }
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: left;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.option-btn:hover { border-color: var(--accent-color); }
+.option-btn.selected {
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+.option-label {
+    font-weight: bold;
+    margin-right: 15px;
+    opacity: 0.7;
+}
+/* --- Immediate Feedback Styles (Professional Minimal) --- */
+
+/* 1. Define Professional Tints per Theme */
+:root {
+    /* Light Mode: Subtle pastel backgrounds */
+    --success-bg: rgba(0, 184, 148, 0.12);
+    --success-border: #00b894;
+    --success-text: #006e58; /* Darker green for text readability */
+    
+    --error-bg: rgba(231, 76, 60, 0.12);
+    --error-border: #e74c3c;
+    --error-text: #c0392b; /* Darker red for text readability */
+}
+
+/* Dark Mode Overrides: Slightly more opacity to be visible on dark cards */
+.theme-dark {
+    --success-bg: rgba(0, 184, 148, 0.25);
+    --success-text: #55efc4; /* Lighter green for text on dark bg */
+    
+    --error-bg: rgba(231, 76, 60, 0.25);
+    --error-text: #ff7675; /* Lighter red for text on dark bg */
+}
+
+/* 2. Base Locked State */
+.options-grid.answered .option-btn {
+    cursor: default;
+    opacity: 0.6; /* Dim unselected/irrelevant options slightly */
+    pointer-events: none;
+    border-color: transparent; /* Clean look for unselected items */
+}
+
+/* 3. Correct Answer Styling */
+.options-grid.answered .option-btn.correct {
+    opacity: 1; /* Keep correct answer fully visible */
+    background-color: var(--success-bg) !important;
+    border: 2px solid var(--success-border) !important;
+    color: var(--success-text) !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 184, 148, 0.15); /* Soft glow */
+}
+
+/* 4. Wrong Answer Styling */
+.options-grid.answered .option-btn.wrong {
+    opacity: 1;
+    background-color: var(--error-bg) !important;
+    border: 2px solid var(--error-border) !important;
+    color: var(--error-text) !important;
+    font-weight: 600;
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* 5. Fix Icons/Labels Color */
+/* Ensures the A/B/C/D labels inherit the new text color */
+.option-btn.correct .option-label,
+.option-btn.wrong .option-label {
+    color: currentColor;
+    opacity: 1;
+}
+
+/* Shake Animation (Keep as is) */
+@keyframes shake {
+0%   { transform: translateX(0); }
+  25%  { transform: translateX(-2px); }
+  50%  { transform: translateX(2px); }
+  75%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+/* --- Results --- */
+.score-card { text-align: center; margin-bottom: 2rem; padding: 2rem; border: 1px solid var(--border-color); border-radius: 12px; }
+.score-display { font-size: 3rem; font-weight: bold; color: var(--accent-color); }
+.score-total { font-size: 1.5rem; color: var(--text-color); opacity: 0.5; }
+.stats-row { display: flex; justify-content: space-around; margin-bottom: 2rem; }
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat .label { font-size: 0.8rem; opacity: 0.7; margin-bottom: 4px; }
+.stat .value { font-size: 1.2rem; font-weight: bold; }
